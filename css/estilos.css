@@ -1,0 +1,921 @@
+/* PASO 1. El ancho incluye padding y borde: facilita calcular tamaños. */
+* {
+  box-sizing: border-box;
+}
+
+/* PASO 2. Estilos generales que heredan los textos. */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #326602;
+  background: #fffaf3;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.7rem;
+  margin: 0 0 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+a {
+  color: #448309;
+  text-underline-offset: 4px;
+}
+
+/* El foco visible permite recorrer la web con el teclado. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #68a800;
+  outline-offset: 4px;
+}
+
+/* PASO 3. Nunca estirar una imagen más allá de su contenedor. */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.contenedor {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.seccion {
+  padding: 3.5rem 0;
+}
+
+.fondo {
+  background: #f4e9d9;
+}
+
+.etiqueta {
+  font-weight: bold;
+  color: #94432f;
+  font-size: .9rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.nota {
+  font-size: .9rem;
+}
+
+/* PASO 4. Flexbox alinea logo y navegación. wrap evita desbordamientos. */
+.cabecera {
+  background: white;
+  border-bottom: 1px solid #445815;
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a,
+summary {
+  display: block;
+  padding: .65rem .8rem;
+  color: #3d302b;
+  cursor: pointer;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu a:hover,
+summary:hover {
+  background: #f4e1cc;
+  border-radius: .4rem;
+}
+
+/* El menú acompaña al usuario al bajar por la página.
+   sticky conserva su espacio: no hace falta compensar con padding en body.
+   top: 0 lo mantiene pegado arriba; z-index evita que las fotos lo tapen. */
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 18px #59362210;
+}
+
+/* Dejar espacio al navegar con #id para que el header no tape el título. */
+section[id],
+main[id] {
+  scroll-margin-top: 130px;
+}
+
+/* PASO 5. La lista interior es vertical. Solo details controla su apertura. */
+.desplegable {
+  position: relative;
+}
+
+summary {
+  list-style: revert;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 230px;
+  padding: .5rem;
+  margin: .3rem 0 0;
+  list-style: none;
+  background: white;
+  border: 1px solid #d9bfa6;
+  border-radius: .5rem;
+  box-shadow: 0 8px 20px #59362220;
+  z-index: 10;
+}
+
+/* PASO 6. Dos columnas iguales: imagen y texto. minmax evita desborde. */
+.dos-columnas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.dos-columnas>* {
+  min-width: 0;
+}
+
+.hero {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.foto {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2rem .8rem 2.5rem 1rem;
+}
+
+/* PASO 7. Enlaces y botones con apariencia consistente. */
+.boton {
+  display: inline-block;
+  padding: .8rem 1.1rem;
+  background: #94432f;
+  color: white;
+  border: 0;
+  border-radius: .45rem;
+  font: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background: #71301f;
+}
+
+.enlace {
+  display: inline-block;
+  margin: .8rem;
+}
+
+/* PASO 8. Tres tarjetas en escritorio. */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tarjeta {
+  padding: 1.5rem;
+  border: 1px solid #dfcbb7;
+  border-radius: .7rem;
+  background: white;
+}
+
+.numero {
+  color: #94432f;
+  font-weight: bold;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+figure {
+  margin: 0;
+}
+
+.galeria img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: .6rem;
+}
+
+figcaption {
+  padding-top: .5rem;
+}
+
+blockquote {
+  margin-left: 0;
+  font-size: 1.35rem;
+}
+
+/* PASO 9. El orientador responde a los radios sin JavaScript. */
+.orientador {
+  border: 1px solid #c8ab8d;
+  border-radius: .6rem;
+  padding: 1.5rem;
+  min-width: 0;
+}
+/* Estilos para el control de los pasos */
+
+/* =========================================================
+   ESTILOS DE CALCULADORAS Y SIMULADOR (ODS 13)
+   ========================================================= */
+
+.seccion-calculadora {
+  padding: 1.5rem 0;
+}
+
+.encabezado-seccion {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.encabezado-seccion h2 {
+  font-family: Georgia, serif;
+  color: #87402e;
+  margin-bottom: 0.5rem;
+}
+
+.linea-divisora-seccion {
+  border: 0;
+  height: 1px;
+  background: #dfcbb7;
+  margin: 3rem 0;
+}
+
+/* CARDS DE LA CALCULADORA POR PASOS */
+.tarjeta-calculadora {
+  background-color: #fff;
+  border: 1px solid #dfcbb7;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  max-width: 650px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(95, 54, 34, 0.08);
+}
+
+.indicador-paso {
+  font-weight: bold;
+  color: #87402e;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.paso-form {
+  display: none;
+}
+
+.paso-form.activo {
+  display: block;
+}
+
+.campo-select {
+  width: 100%;
+  padding: 0.65rem;
+  font-size: 1rem;
+  border: 1px solid #dfcbb7;
+  border-radius: 0.45rem;
+  background-color: white;
+  color: #3d302b;
+  font-family: inherit;
+  margin-bottom: 1rem;
+}
+
+.grupo-botones {
+  margin-top: 1.8rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-secundario {
+  background-color: white;
+  color: #3d302b;
+  border: 1px solid #dfcbb7;
+}
+
+.btn-secundario:hover {
+  background-color: #f4e1cc;
+}
+
+.caja-resultado {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #fffaf3;
+  border: 1px solid #dfcbb7;
+  border-left: 5px solid #87402e;
+  border-radius: 0.45rem;
+  text-align: center;
+}
+
+.metrica-resultado {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #87402e;
+  margin: 0.8rem 0;
+}
+
+.nota-ods {
+  font-size: 0.95rem;
+  color: #3d302b;
+}
+
+/* LAYOUT EN GRID Y SIMULADOR CON BARRAS */
+.contenedor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .contenedor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tarjeta-box {
+  background: #ffffff;
+  border-radius: 0.8rem;
+  padding: 1.8rem;
+  border: 1px solid #dfcbb7;
+  box-shadow: 0 4px 12px rgba(95, 54, 34, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-seccion {
+  font-size: 1.3rem;
+  color: #3d302b;
+  font-family: Georgia, serif;
+}
+
+.linea-divisora {
+  border: none;
+  height: 1px;
+  background-color: #dfcbb7;
+  margin: 0.8rem 0 1.2rem 0;
+}
+
+.grupo-input {
+  margin-bottom: 1rem;
+}
+
+.grupo-input label {
+  display: block;
+  font-size: 0.9rem;
+  color: #3d302b;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.grupo-input input {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #8b7465;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  color: #87402e;
+  font-weight: bold;
+}
+
+.fila-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #3d302b;
+  margin-bottom: 1rem;
+}
+
+.acciones-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* BARRAS Y SEGMENTOS */
+.subtitulo-grafica {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #94432f;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.barra-segmentada-container {
+  width: 100%;
+  height: 28px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.segmento {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.seg-morado  { background-color: #94432f; }
+.seg-verde   { background-color: #448309; }
+.seg-naranja { background-color: #d97706; }
+.seg-rosado  { background-color: #c2410c; }
+
+.leyenda-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.leyenda-lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.leyenda-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-morado  { background-color: #94432f; }
+.dot-verde   { background-color: #448309; }
+.dot-naranja { background-color: #d97706; }
+.dot-rosado  { background-color: #c2410c; }
+
+/* MODAL DE LOCALSTORAGE */
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  width: 90%;
+  max-width: 480px;
+  position: relative;
+  border: 1px solid #dfcbb7;
+}
+
+.btn-cerrar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-subtext {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+legend {
+  font-weight: bold;
+  padding: 0 .5rem;
+}
+
+.orientador>label {
+  display: inline-block;
+  margin: .4rem 1rem .4rem 0;
+  padding: .4rem;
+  cursor: pointer;
+}
+
+.orientador>input:checked+label {
+  background: #a72504;
+  color: white;
+  border-radius: .3rem;
+}
+
+.resultados {
+  background: white;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  margin-top: 1rem;
+}
+
+/* Primero ocultamos los tres paneles. */
+.respuesta {
+  display: none;
+}
+
+/* ~ busca un hermano posterior. :checked identifica la opción marcada. */
+#mochila:checked~.resultados .mochila,
+#libreta:checked~.resultados .libreta,
+#abrigo:checked~.resultados .abrigo {
+  display: block;
+}
+
+/* PASO 10. Cada campo ocupa una fila del formulario. */
+.formulario {
+  display: grid;
+  gap: .6rem;
+  background: white;
+  border: 1px solid #dfcbb7;
+  padding: 1.5rem;
+  border-radius: .7rem;
+}
+
+.formulario>label {
+  font-weight: bold;
+}
+/* ==========================================
+   ESTILOS PARA EL MENÚ HAMBURGUESA
+   ========================================== */
+
+/* En pantallas grandes (escritorio), el botón hamburguesa permanece oculto */
+.boton-hamburguesa {
+  display: none;
+}
+
+/* Reglas exclusivamente para celulares (pantallas hasta 600px) */
+@media (max-width: 600px) {
+  /* Estilos del botón hamburguesa */
+  .boton-hamburguesa {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem .8rem;
+    background: #94432f;
+    color: white;
+    border: none;
+    border-radius: .4rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .boton-hamburguesa:hover {
+    background: #71301f;
+  }
+
+  /* Dibujo del icono de tres líneas (hamburguesa) con CSS puro */
+  .icono-hamburguesa {
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: white;
+    position: relative;
+  }
+
+  .icono-hamburguesa::before,
+  .icono-hamburguesa::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+  }
+
+  .icono-hamburguesa::before { top: -6px; }
+  .icono-hamburguesa::after { top: 6px; }
+
+  /* Desplegable del menú de navegación en móvil */
+  #navegacion[hidden] {
+    display: none !important;
+  }
+
+  #navegacion {
+    width: 100%;
+    background: white;
+    border: 1px solid #dfcbb7;
+    border-radius: .5rem;
+    padding: .5rem;
+    margin-top: .5rem;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .menu a,
+  summary {
+    padding: .8rem;
+    border-bottom: 1px solid #f4e9d9;
+  }
+}
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  padding: .7rem;
+  border: 1px solid #8b7465;
+  border-radius: .3rem;
+  background: white;
+  color: #3d302b;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #94432f;
+}
+
+/* PASO 11. La proporción del video se conserva a cualquier ancho. */
+.video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
+}
+
+.confirmacion {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.pie {
+  background: #40332c;
+  color: white;
+  padding: 2rem 0;
+}
+
+.pie a {
+  color: white;
+}
+
+.redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.redes a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.redes img {
+  filter: invert(1);
+}
+
+.saltar {
+  position: absolute;
+  left: -9999px;
+}
+
+.saltar:focus {
+  left: 1rem;
+  top: 1rem;
+  padding: 1rem;
+  background: white;
+  z-index: 20;
+}
+
+/* PASO 12. TABLET: estas reglas se aplican a 900 px o menos. */
+@media (max-width: 900px) {
+  .barra {
+    gap: .4rem;
+  }
+
+  .tarjetas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* PASO 13. CELULAR: cambiamos columnas por una sola columna. */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .dos-columnas,
+  .tarjetas,
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+
+  .dos-columnas {
+    gap: 1.5rem;
+  }
+
+  .hero,
+  .seccion {
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+  }
+
+  .barra nav {
+    width: 100%;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .menu a,
+  summary {
+    padding: .45rem .55rem;
+    font-size: .95rem;
+  }
+
+  /* Conserva el desplegable vertical bajo Resolver y dentro de la pantalla. */
+  .submenu {
+    left: auto;
+    right: 0;
+    width: 205px;
+    max-width: 85vw;
+    max-height: 55vh;
+    overflow-y: auto;
+  }
+
+  section[id],
+  main[id] {
+    scroll-margin-top: 190px;
+  }
+
+  .enlace {
+    margin-left: 0;
+  }
+
+  .formulario,
+  .orientador,
+  .resultados {
+    padding: 1rem;
+  }
+}
+.aumento {
+    color: #d32f2f; /* Rojo para alertar aumento de CO₂ */
+    font-weight: bold;
+}
+
+.disminucion {
+    color: #2e7d32; /* Verde para felicitaciones por reducción de CO₂ */
+    font-weight: bold;
+}
+
+.neutro {
+    color: #555555;
+    font-weight: bold;
+}
+
+.badge-indicador {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.badge-aumento {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+.badge-disminucion {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+/* Detalles cálidos: fondo de papel, acento terracota y bordes suaves. */
+.postal {
+  background: #fff;
+  padding: .8rem;
+  border: 1px solid #dfcbb7;
+  border-radius: 2rem 1rem 2.8rem 1rem;
+  box-shadow: 8px 10px 0 #ebd7b9;
+}
+
+.postal figcaption {
+  padding: .6rem .5rem .2rem;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+  letter-spacing: -.035em;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+}
+
+.tarjeta:nth-child(2) {
+  background: #fff3dc;
+  border-radius: 1.5rem .6rem 1.5rem .6rem;
+}
+
+blockquote {
+  font-family: Georgia, serif;
+  font-style: italic;
+  max-width: 780px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+@media (max-width: 600px) {
+  .barra {
+    padding: .6rem 0;
+  }
+
+  .marca {
+    font-size: 1.2rem;
+  }
+
+  .marca img {
+    width: 30px;
+  }
+}

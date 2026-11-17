@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Huella de Carbono | PorElClima</title>
+  <!-- Estilos compartidos del sitio y estilos propios de la calculadora -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.jpg">
+  
+  <!-- Carga de scripts con el atributo defer -->
+  <script src="menu.js" defer></script>
+  <script src="js/calculadora.js" defer></script>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- Header sticky compartido con menú hamburguesa -->
+  <header class="cabecera">
+    <div class="contenedor barra">
+      <a class="marca" href="index.html">
+        <img src="imagenes/logo.jpg" alt="" width="42" height="42">PorElClima
+      </a>
+      
+      <button id="boton-menu" class="boton-hamburguesa" aria-expanded="false" aria-label="Abrir menú">
+        <span class="icono-hamburguesa" aria-hidden="true"></span>
+        <span id="texto-menu" class="texto-oculto">Menú</span>
+      </button>
+
+      <nav id="navegacion" aria-label="Navegación principal">
+        <ul class="menu">
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li>
+            <details class="desplegable" id="resolver">
+              <summary>Resolver</summary>
+              <ul class="submenu">
+                <li><a href="index.html#servicios">Encuestas Ambientales</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="recursos.html">Video y guía</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="seccion contenedor">
+
+    <!-- SECCIÓN 1: CALCULADORA POR PASOS -->
+    <section id="calculadora-pasos" class="seccion-calculadora">
+      <div class="encabezado-seccion">
+        <p class="etiqueta">ODS 13 · Acción por el Clima</p>
+        <h2>Calculadora de Huella de Carbono por Pasos</h2>
+        <p>Conoce el impacto ambiental de tus hábitos diarios evaluando 3 áreas clave.</p>
+      </div>
+
+      <div class="tarjeta-calculadora">
+        <!-- Indicador de paso actual (Escenario 4) -->
+        <div class="indicador-paso" aria-live="polite">
+          Paso <span id="paso-actual-numero">1</span> de 3
+        </div>
+
+        <!-- Formulario interactivo en 3 pasos (Escenario 1) -->
+        <form id="form-huella-pasos">
+          
+          <!-- Paso 1: Transporte -->
+          <div id="paso-1" class="paso-form activo">
+            <h3>Paso 1: Transporte diario</h3>
+            <label for="transporte-pasos" class="etiqueta">¿Cuál es tu medio de transporte principal?</label>
+            <select id="transporte-pasos" class="campo-select" required>
+              <option value="2.3">Automóvil particular (Combustible)</option>
+              <option value="0.8">Transporte público (Bus / Metro)</option>
+              <option value="0.1">Bicicleta / Caminar</option>
+            </select>
+          </div>
+
+          <!-- Paso 2: Energía -->
+          <div id="paso-2" class="paso-form">
+            <h3>Paso 2: Consumo de energía en el hogar</h3>
+            <label for="energia-pasos" class="etiqueta">¿Cómo describirías el consumo eléctrico en tu hogar?</label>
+            <select id="energia-pasos" class="campo-select" required>
+              <option value="1.8">Alto (Uso frecuente de aire acondicionado o secadora)</option>
+              <option value="1.0">Promedio (Uso estándar de electrodomésticos)</option>
+              <option value="0.4">Bajo (Uso eficiente y focos LED)</option>
+            </select>
+          </div>
+
+          <!-- Paso 3: Alimentación -->
+          <div id="paso-3" class="paso-form">
+            <h3>Paso 3: Hábitos de alimentación</h3>
+            <label for="alimentacion-pasos" class="etiqueta">¿Con qué frecuencia consumes carne roja?</label>
+            <select id="alimentacion-pasos" class="campo-select" required>
+              <option value="2.1">A diario (4 a 7 veces por semana)</option>
+              <option value="1.2">Ocasional (1 a 3 veces por semana)</option>
+              <option value="0.6">Rara vez / Dieta vegetariana o vegana</option>
+            </select>
+          </div>
+
+          <!-- Botones de navegación (Escenarios 2, 3 y 5) -->
+          <div class="grupo-botones">
+            <button type="button" id="btn-anterior" class="btn btn-secundario" style="display: none;">Anterior</button>
+            <button type="button" id="btn-siguiente" class="btn btn-primario">Siguiente</button>
+            <button type="submit" id="btn-calcular" class="btn btn-primario" style="display: none;">Calcular Huella</button>
+          </div>
+
+        </form>
+
+        <!-- Panel de resultados (Escenario 5) -->
+        <div id="resultado-huella" class="caja-resultado" hidden>
+          <h3>Resultado de tu Estimación</h3>
+          <p>Tu huella de carbono anual aproximada es de:</p>
+          <div class="metrica-resultado">
+            <span id="valor-huella">0</span> toneladas de CO₂e / año
+          </div>
+          <p class="nota-ods">
+            ¡Cada acción cuenta! Reducir las emisiones contribuye directamente a las metas del ODS 13.
+          </p>
+          <a href="confirmacion.html" class="btn btn-primario" style="display: inline-block; margin-top: 1rem; text-decoration: none;">Ver Historial Completo</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="linea-divisora-seccion">
+
+    <!-- SECCIÓN 2: CALCULADORA Y GRÁFICA PORCENTUAL CON LOCALSTORAGE -->
+    <section id="calculadora-grafica" class="seccion-calculadora">
+      <div class="encabezado-seccion">
+        <h2>Simulador de Distribución y Almacenamiento</h2>
+        <p>Ingresa los kg de consumo para ver el desglose en tiempo real y guardar tu registro local.</p>
+      </div>
+
+      <div class="contenedor-grid">
+        <!-- Tarjeta Formulario -->
+        <div class="tarjeta-box">
+          <h3 class="titulo-seccion">Valores de consumo</h3>
+          <hr class="linea-divisora">
+
+          <form id="form-huella-grafica">
+            <div class="grupo-input">
+              <label for="transporte">Transporte y movilidad</label>
+              <input type="number" id="transporte" value="40" min="0" step="any" required>
+            </div>
+
+            <div class="grupo-input">
+              <label for="energia">Hogar y energía</label>
+              <input type="number" id="energia" value="30" min="0" step="any" required>
+            </div>
+
+            <div class="grupo-input">
+              <label for="alimentacion">Alimentación y dieta</label>
+              <input type="number" id="alimentacion" value="20" min="0" step="any" required>
+            </div>
+
+            <div class="grupo-input">
+              <label for="consumo">Consumo general</label>
+              <input type="number" id="consumo" value="10" min="0" step="any" required>
+            </div>
+
+            <hr class="linea-divisora">
+
+            <div class="fila-total">
+              <span>Total sumado:</span>
+              <strong id="total-sumado">100</strong>
+            </div>
+
+            <div class="acciones-form">
+              <button type="submit" id="btn-guardar" class="btn btn-primario">Guardar en LocalStorage</button>
+              <button type="button" id="btn-ver-grafica" class="btn btn-secundario">Ver mi registro guardado</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Tarjeta Gráfica Porcentual -->
+        <div class="tarjeta-box">
+          <h3 class="titulo-seccion">Gráfica Porcentual</h3>
+          <hr class="linea-divisora">
+
+          <span class="subtitulo-grafica">DISTRIBUCIÓN DE LA BARRA TOTAL (100%)</span>
+
+          <div class="barra-segmentada-container">
+            <div id="seg-1" class="segmento seg-morado" style="width: 40%;"></div>
+            <div id="seg-2" class="segmento seg-verde" style="width: 30%;"></div>
+            <div id="seg-3" class="segmento seg-naranja" style="width: 20%;"></div>
+            <div id="seg-4" class="segmento seg-rosado" style="width: 10%;"></div>
+          </div>
+
+          <ul class="leyenda-lista">
+            <li>
+              <div class="leyenda-left">
+                <span class="dot dot-morado"></span>
+                <span>1.- Transporte:</span>
+              </div>
+              <strong id="pct-1">40.0%</strong>
+            </li>
+            <li>
+              <div class="leyenda-left">
+                <span class="dot dot-verde"></span>
+                <span>2.- Energía:</span>
+              </div>
+              <strong id="pct-2">30.0%</strong>
+            </li>
+            <li>
+              <div class="leyenda-left">
+                <span class="dot dot-naranja"></span>
+                <span>3.- Alimentación:</span>
+              </div>
+              <strong id="pct-3">20.0%</strong>
+            </li>
+            <li>
+              <div class="leyenda-left">
+                <span class="dot dot-rosado"></span>
+                <span>4.- Consumo:</span>
+              </div>
+              <strong id="pct-4">10.0%</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE LOCALSTORAGE -->
+  <div id="modal-grafica" class="modal hidden">
+    <div class="modal-contenido">
+      <span id="btn-cerrar-modal" class="btn-cerrar">&times;</span>
+      <h3>📊 Datos de Huella Almacenados</h3>
+      <p class="modal-subtext">Información recuperada de <code>localStorage</code></p>
+      <div id="contenedor-datos-guardados">
+        <!-- Renderizado dinámico mediante JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de página compartido -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p><strong>PorElClima</strong> · Combatiendo el cambio climatico</p>
+      <p>Contacto de ejemplo: PorElClima@gmail.org</p>
+      <nav class="redes" aria-label="Redes sociales de referencia">
+        <!-- Son páginas generales de las redes; reemplazar por cuentas del proyecto. -->
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/facebook.svg"
+            alt="" width="24" height="24">Facebook</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/instagram.svg"
+            alt="" width="24" height="24">Instagram</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/youtube.svg"
+            alt="" width="24" height="24">YouTube</a>
+      </nav>
+      <p>© 2026 PorElClima · Ejemplo educativo ficticio · <a href="FUENTES.txt">Créditos de recursos</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

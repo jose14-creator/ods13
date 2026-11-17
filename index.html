@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- PASO 1: permite que el navegador use el ancho real del celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | PorElClima</title>
+  <!-- PASO 2: conectar este HTML con el archivo CSS compartido. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Este icono aparece en la pestaña del navegador. -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.jpg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.jpg">
+  <!-- AGREGAR esta línea para conectar el JavaScript del menú -->
+  <script src="menu.js" defer></script>
+</head>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <!-- PASO 3: este header permanece visible con position: sticky en CSS. -->
+  <header class="cabecera">
+    <div class="contenedor barra">
+      <a class="marca" href="index.html"><img src="imagenes/logo.jpg" alt="" width="42" height="42">PorElClima</a>
+      
+      <!-- AGREGAR este botón de menú hamburguesa -->
+      <button id="boton-menu" class="boton-hamburguesa" aria-expanded="false" aria-label="Abrir menú">
+        <span class="icono-hamburguesa" aria-hidden="true"></span>
+        <span id="texto-menu" class="texto-oculto">Menú</span>
+      </button>
+
+      <!-- Tu navegación existente con id="navegacion" agregado -->
+      <nav id="navegacion" aria-label="Navegación principal">
+        <ul class="menu">
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li>
+            <details class="desplegable" id="resolver">
+              <summary>Resolver</summary>
+              <ul class="submenu">
+                <li><a href="index.html#servicios">Encuestas Ambientales</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="recursos.html">Video y guía</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido">
+    <!-- PASO 5: el inicio está en la sección, no en el header sticky. -->
+<section id="inicio" class="hero contenedor dos-columnas" aria-labelledby="titulo">
+  <div>
+    <p class="etiqueta">Bienvenidos a nuestro proyecto</p>
+    <h1 id="titulo">Nuestra misión.</h1>
+    <p>Implementar formas variadas para la comunidad de reducir su impacto en el cambio climático.</p>
+    
+    <!-- Enlaces con sus cierres </a> correctos -->
+    <a class="boton" href="confirmacion.html">Calcular Huella de Carbono</a>
+    <a class="enlace" href="recursos.html">Conocer la iniciativa</a>
+  </div>
+
+  <figure class="postal">
+    <img class="foto" src="imagenes/images.jfif" alt="Mochila preparada para una salida" width="1000" height="667">
+    <figcaption>Apóyanos hoy.</figcaption>
+  </figure>
+</section>
+    <section id="nosotros" class="seccion fondo">
+      <div class="contenedor dos-columnas">
+        <img class="foto" src="imagenes/bosque.jpg" alt="Productos y puestos de una feria" width="1000" height="667"
+          loading="lazy">
+        <div>
+          <p class="etiqueta">Una mesa de ayuda entre los puestos</p>
+          <h2>Proyectos reales por el clima.</h2>
+          <p>ACME es una oficina ficticia de objetos extraviados en ferias itinerantes. Cuando el evento se traslada,
+            las personas no saben a quién preguntar ni dónde quedó lo encontrado.</p>
+          <h3>1. Huella de Carbono Perú</h3>
+          <p>Es una herramienta oficial del Ministerio del Ambiente que permite a las organizaciones medir y gestionar sus emisiones de gases de efecto invernadero.</p>
+          <h4>2. Programa Nacional de Conservación de Bosques</h4>
+          <p>Es una iniciativa del Ministerio del Ambiente que trabaja con comunidades para proteger los bosques tropicales y contribuir a reducir la deforestación.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="servicios" class="seccion contenedor">
+      <p class="etiqueta">Nuestros Metodos</p>
+      <h2>Diversas formas de realizar tu aporte.</h2>
+      <div class="tarjetas">
+        <article class="tarjeta"><span class="numero">01 / Mira</span>
+          <h3>Historial tu huella de carbono</h3>
+          <p>Revisa el historial de tu huella de carbono</p><a href="confirmacion.html">Ver tu impacto actual</a>
+        </article>
+        <article class="tarjeta"><span class="numero">02 / Cuenta</span>
+          <h3>Calcula tu huella de carbono</h3>
+          <p>Accede a la calculadora de la huella de carbono </p><a href="calcular.html">Ver Calculadora</a>
+      </div>
+    </section>
+    <section id="galeria" class="seccion fondo">
+      <div class="contenedor">
+        <h2>Detrás de cada objeto, una historia.</h2>
+        <div class="galeria">
+          <figure><img src="imagenes/images.jfif" alt="Mochila de referencia para la iniciativa" width="1000"
+              height="667" loading="lazy">
+            <figcaption>Una compañera de recorridos</figcaption>
+          </figure>
+          <figure><img src="imagenes/bosque.jpg" alt="Productos expuestos en una feria" width="1000" height="667"
+              loading="lazy">
+            <figcaption>Un lugar para encontrarnos</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- PASO FINAL: pie compartido por las páginas del sitio. -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p><strong>PorElClima</strong> · Combatiendo el cambio climatico</p>
+      <p>Contacto de ejemplo: PorElClima@gmail.org</p>
+      <nav class="redes" aria-label="Redes sociales de referencia">
+        <!-- Son páginas generales de las redes; reemplazar por cuentas del proyecto. -->
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/facebook.svg"
+            alt="" width="24" height="24">Facebook</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/instagram.svg"
+            alt="" width="24" height="24">Instagram</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/youtube.svg"
+            alt="" width="24" height="24">YouTube</a>
+      </nav>
+      <p>© 2026 PorElClima · Ejemplo educativo ficticio · <a href="FUENTES.txt">Créditos de recursos</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

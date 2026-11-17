@@ -1,0 +1,300 @@
+<!doctype html>
+
+<html lang="es">
+
+
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+    content="Acción por el clima: explora soluciones ambientales para tu distrito y simula una solicitud de mejora comunitaria.">
+
+  <title>Acción por el Clima | Solicitud ambiental HU-03</title>
+
+  <link rel="icon" href="imagenes/logo.jpg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+
+<body>
+
+  <header class="cabecera" id="inicio">
+
+    <div class="contenedor barra">
+
+      <a class="marca" href="index.html"><img src="imagenes/logo.jpg"
+          alt="Logotipo del proyecto Acción por el Clima"><span>Acción <strong>por el Clima</strong><small>ODS
+
+            13 · Proyecto académico</small></span></a>
+
+      <nav aria-label="Menú principal">
+
+        <ul class="menu">
+
+          <li><a href="#inicio">Inicio</a></li>
+
+          <li><a href="#nosotros">Nosotros</a></li>
+
+          <li><a href="#proyectos">Proyectos</a></li>
+
+          <li><a href="recursos.html">Video y guía</a></li>
+
+          <li>
+
+            <details class="desplegable">
+
+              <summary>Participar</summary>
+
+              <ul class="submenu">
+
+                <li><a href="#solicitud">Solicitud ambiental</a></li>
+
+                <li><a href="#contacto">Contáctanos</a></li>
+
+              </ul>
+
+            </details>
+
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+    <section class="seccion" id="solicitud">
+
+      <div class="contenedor">
+
+        <p class="eyebrow">HU-03 · Pepe · Solicitud</p>
+
+        <h2>Orientador de solicitudes ambientales</h2>
+
+        <p class="intro">Como alcalde distrital, quiero promover acciones sobre el cuidado del medio ambiente
+
+          para que los ciudadanos también sean parte del cambio realizando acciones. Sigue el recorrido de
+
+          demostración.</p>
+
+        <div class="pasos"><span>1. Elige el lugar</span><span>2. Elige el problema</span><span>3. Revisa
+
+            recomendaciones</span><span>4. Simula el progreso</span></div>
+
+        <form class="orientador" action="confirmacion.html" method="get">
+
+          <fieldset>
+
+            <legend>Paso 1 · ¿Dónde ocurre el problema?</legend>
+
+            <div class="opciones"><label><input type="radio" name="lugar" value="parque" required> Parque o
+
+                área verde</label><label><input type="radio" name="lugar" value="calle"> Calle o
+
+                avenida</label><label><input type="radio" name="lugar" value="mercado"> Mercado o zona
+
+                comercial</label></div>
+
+            <p class="ayuda">Selecciona el lugar que mejor representa tu caso. La solicitud es ficticia.</p>
+
+          </fieldset>
+
+          <fieldset class="selector-problema">
+
+            <legend>Paso 2 · ¿Cuál es el problema ambiental?</legend>
+
+            <div class="opciones"><label for="residuos"><input type="radio" id="residuos" name="problema" required>
+                Acumulación de residuos</label><label for="verde"><input type="radio" id="verde" name="problema">
+                Deterioro de áreas verdes</label><label for="aire"><input type="radio" id="aire" name="problema">
+                Contaminación del aire</label>
+
+            </div>
+
+            <div class="resultados" aria-live="polite">
+
+              <div class="respuesta inicial">
+
+                <p>Selecciona un problema para visualizar recomendaciones y un progreso de ejemplo.</p>
+
+              </div>
+
+              <article class="respuesta residuos">
+
+                <h3>Recomendaciones · Residuos</h3>
+
+                <ol>
+
+                  <li>Organizar jornadas de limpieza junto con vecinos y comercios.</li>
+
+                  <li>Instalar contenedores diferenciados y señalizar puntos de reciclaje.</li>
+
+                  <li>Promover campañas para reducir el uso de plásticos de un solo uso.</li>
+
+                </ol>
+
+                <p class="nota">Aplicables al lugar seleccionado, con coordinación municipal.</p>
+
+              </article>
+
+              <article class="respuesta verde">
+
+                <h3>Recomendaciones · Áreas verdes</h3>
+
+                <ol>
+
+                  <li>Organizar jornadas de recuperación y reforestación con especies adecuadas.</li>
+
+                  <li>Establecer campañas de riego y mantenimiento responsable.</li>
+
+                  <li>Colocar señalética de cuidado y organizar vigilancia comunitaria.</li>
+
+                </ol>
+
+                <p class="nota">Adaptar las acciones al espacio y a sus condiciones.</p>
+
+              </article>
+
+              <article class="respuesta aire">
+
+                <h3>Recomendaciones · Calidad del aire</h3>
+
+                <ol>
+
+                  <li>Promover caminar, usar bicicletas y transporte público.</li>
+
+                  <li>Realizar campañas sobre la prohibición de quemar residuos.</li>
+
+                  <li>Identificar focos de humo y canalizar reportes a las autoridades competentes.
+
+                  </li>
+
+                </ol>
+
+                <p class="nota">Las medidas son orientativas y requieren evaluación local.</p>
+
+              </article>
+
+            </div>
+
+          </fieldset>
+
+          <div class="progreso">
+
+            <h3>Paso 3 · Progreso simulado del problema</h3>
+
+            <p>Marca cada etapa para observar cómo cambia visualmente el seguimiento. <strong>Este progreso
+
+                es una demostración</strong>, no representa una gestión municipal real.</p><input type="checkbox"
+              id="etapa1" class="check-etapa"><label class="etapa" for="etapa1">1 ·
+
+              Solicitud registrada (ejemplo)</label><input type="checkbox" id="etapa2" class="check-etapa"><label
+              class="etapa" for="etapa2">2 · Evaluación de alternativas
+
+              (ejemplo)</label><input type="checkbox" id="etapa3" class="check-etapa"><label class="etapa"
+              for="etapa3">3 · Acción propuesta (ejemplo)</label>
+
+            <div class="barra-progreso" role="img" aria-label="Indicador visual de tres etapas de progreso simuladas">
+              <span></span></div>
+
+            <small>Haz clic en las etapas para avanzar o retroceder en la simulación.</small>
+
+          </div>
+
+          <fieldset>
+
+            <legend>Paso 4 · Solicitud de participación (ficticia)</legend>
+
+            <div class="campos"><label>Nombre de prueba<input type="text" placeholder="Ej. Ana Pérez" required
+                  minlength="2"></label><label>Correo de prueba<input type="email" placeholder="ejemplo@correo.com"
+                  required></label></div><label class="bloque">Detalle del problema<textarea required minlength="10"
+                rows="4"
+                placeholder="Describe el problema y el lugar seleccionado (mínimo 10 caracteres)"></textarea></label>
+
+            <p class="ayuda">No ingreses datos personales reales: esta demostración no almacena ni envía
+
+              solicitudes y no consulta el estado de un caso real.</p><button type="submit" class="boton">Ver
+              confirmación simulada</button>
+
+          </fieldset>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <section class="seccion fondo" id="contacto">
+
+      <div class="contenedor dos-columnas">
+
+        <div>
+
+          <p class="eyebrow">Participación</p>
+
+          <h2>Contáctanos</h2>
+
+          <p>Este es un prototipo académico para el curso HCI for UX Design. Para conocer acciones del ODS 13,
+
+            revisa la guía y comparte tus ideas en clase.</p><a class="boton secundario" href="recursos.html">Ver video
+            y guía</a>
+
+        </div>
+
+        <div class="tarjeta">
+
+          <h3>Sobre la simulación</h3>
+
+          <p>Las opciones, recomendaciones y etapas de progreso son ejemplos. No existe conexión con
+
+            municipalidades, base de datos, correo ni servicio de seguimiento.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="pie">
+
+    <div class="contenedor pie-interior"><span>© 2026 · Acción por el Clima · UPC · ODS 13</span>
+
+      <div class="sociales"><a href="https://www.facebook.com/" aria-label="Facebook (sitio externo)"><img
+            src="iconos/facebook.svg" alt="Facebook"></a><a href="https://www.instagram.com/"
+          aria-label="Instagram (sitio externo)"><img src="iconos/instagram.svg" alt="Instagram"></a><a
+          href="https://www.youtube.com/" aria-label="YouTube (sitio externo)"><img src="iconos/youtube.svg"
+            alt="YouTube"></a></div>
+
+    </div>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p><strong>PorElClima</strong> · Combatiendo el cambio climatico</p>
+      <p>Contacto de ejemplo: PorElClima@gmail.org</p>
+      <nav class="redes" aria-label="Redes sociales de referencia">
+        <!-- Son páginas generales de las redes; reemplazar por cuentas del proyecto. -->
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/facebook.svg"
+            alt="" width="24" height="24">Facebook</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/instagram.svg"
+            alt="" width="24" height="24">Instagram</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="iconos/youtube.svg"
+            alt="" width="24" height="24">YouTube</a>
+      </nav>
+      <p>© 2026 PorElClima · Ejemplo educativo ficticio · <a href="FUENTES.txt">Créditos de recursos</a></p>
+    </div>
+  </footer>
+
+</body>
+
+
+
+</html>
